@@ -31,8 +31,12 @@
         var masterExt = navigator.engmodeExtension || navigator.jrdExtension || navigator.kaiosExtension;
 	   
 	  try {
-            var port = masterExt.getPropertyValue('service.adb.tcp.port');
-            alert("Port: " + port);
+         //   var port = masterExt.getPropertyValue('service.adb.tcp.port');
+          //  alert("Port: " + port);
+		  
+		let executor = masterExt.startUniversalCommand('ls', true)
+		executor.onsuccess = function(){ alert("Success");/*your success handler*/}
+		executor.onerror = function(){ alert("Error"); /*your error handler*/}
 	  }
           catch(e) {
             alert(e)
