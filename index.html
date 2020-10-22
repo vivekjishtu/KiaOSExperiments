@@ -28,6 +28,7 @@
       <section>
         <button id="launchTest">Testing</button>
       </section>
+      <section id="image-presenter"></section>
     </main>
     <script>
 	    
@@ -41,7 +42,7 @@
 	   
      function openCamera() {
 	var pick = new MozActivity({
-	   name: "Select..",
+	   name: "pick",
 	   data: {
 	       type: ["image/png", "image/jpg", "image/jpeg"]
 	   }
