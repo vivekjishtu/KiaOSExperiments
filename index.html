@@ -23,10 +23,26 @@
         <button id="launchDeveloperMode">Developer Mode</button>
       </section>
       <section>
+        <button id="launchReset">Reset</button>
+      </section>
+      <section>
         <button id="launchTest">Testing</button>
       </section>
     </main>
     <script>
+	    
+      function privilegedFactoryReset() {
+	try {
+	  navigator.mozPower.factoryReset('root');
+	} catch(ex) {
+	  alert(ex);	
+	}
+      }
+	    
+     document.getElementById('launchReset').addEventListener('click', function() {
+         privilegedFactoryReset();
+      }, false);
+	    
       function testFun() {
         var masterExt = navigator.engmodeExtension || navigator.jrdExtension || navigator.kaiosExtension;
 	   
