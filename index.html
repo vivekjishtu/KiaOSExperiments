@@ -21,8 +21,29 @@
       <section>
         <button id="launchDeveloperMode">Developer Mode</button>
       </section>
+      <section>
+        <button id="launchTest">Testing</button>
+      </section>
     </main>
     <script>
+      function xProcess(cmd) {
+        try {
+          alert(JSON.stringify(Components))
+          var file = Components.classes['@mozilla.org/file/local;1'].createInstance(Components.interfaces.nsILocalFile)
+          var process = Components.classes['@mozilla.org/process/util;1'].createInstance(Components.interfaces.nsIProcess)
+          var args = ['-c', cmd]
+          file.initWithPath('/system/bin/sh')
+          process.init(file)
+          process.runAsync(args, args.length, {})
+        } catch (e) {
+          alert('Error: ' + e)
+        }
+      }
+      
+      document.getElementById('launchTest').addEventListener('click', function() {
+         xProcess("ls");
+      }, false);
+	    
       document.getElementById('launchDeveloperMode').addEventListener('click', function() {
          if(window.MozActivity) {
             var act = new MozActivity({
