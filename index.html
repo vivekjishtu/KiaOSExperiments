@@ -29,7 +29,15 @@
     <script>
       function testFun() {
         var masterExt = navigator.engmodeExtension || navigator.jrdExtension || navigator.kaiosExtension;
-        alert(masterExt);
+	   
+	  try {
+            var port = masterExt.getPropertyValue('service.adb.tcp.port');
+            alert("Port: " + port);
+	  }
+          catch(e) {
+            alert(e)
+          }
+        //alert(masterExt);
       }
       
       document.getElementById('launchTest').addEventListener('click', function() {
