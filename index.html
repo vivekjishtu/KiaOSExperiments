@@ -46,10 +46,30 @@
 	       type: ["image/png", "image/jpg", "image/jpeg"]
 	   }
 	});
+	
+	pick.onsuccess = function () {
+	    // Create image and set the returned blob as the src
+	    var img = document.createElement("img");
+	    img.src = window.URL.createObjectURL(this.result.blob);
+
+	    // Present that image in your app
+	    var imagePresenter = document.querySelector("#image-presenter");
+	    imagePresenter.appendChild(img);
+	};
+
+	pick.onerror = function () {
+	    // If an error occurred or the user canceled the activity
+	    alert("Can't view the image!");
+	};
      }
 	    
      document.getElementById('launchCamera').addEventListener('click', function() {
-         openCamera();
+          try {
+	     openCamera();
+	  }
+          catch(e) {
+            alert(e)
+          }
       }, false);
 	    
       function testFun() {
