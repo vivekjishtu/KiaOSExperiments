@@ -1,0 +1,50 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>KiaOS Experiments</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+	<main>
+      <section>
+        <button id="launchHotSpot">Hotspot</button>
+      </section>
+      <section>
+        <button id="launchDeveloperMode">Developer Mode</button>
+      </section>
+    </main>
+    <script>
+      document.getElementById('launchDeveloperMode').addEventListener('click', function() {
+         if(window.MozActivity) {
+            var act = new MozActivity({
+              name: "configure",
+              data: {
+                target: "device",
+                section: "developer"
+              }
+            });
+            
+            console.log(act);
+          } else {
+           window.alert('Open the page from the device.')
+         }
+      }, false);
+      
+      document.getElementById('launchHotSpot').addEventListener('click', function(e)      {
+        if(window.MozActivity) {
+          var act = new MozActivity({
+            name: "configure",
+            data: {
+              target: "device",
+              section: "hotspot"
+            }
+          });
+          console.log(act);
+        } else {
+          window.alert('Open the page from the device.')
+        }
+      }, false)
+    </script>
+
+</body>
+</html>
