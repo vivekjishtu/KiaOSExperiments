@@ -23,7 +23,7 @@
         <button id="launchDeveloperMode">Developer Mode</button>
       </section>
       <section>
-        <button id="launchReset">Reset</button>
+        <button id="launchCamera">Camera</button>
       </section>
       <section>
         <button id="launchTest">Testing</button>
@@ -38,9 +38,18 @@
 	  alert(ex);	
 	}
       }
+	   
+     function openCamera() {
+	var pick = new MozActivity({
+	   name: "Select..",
+	   data: {
+	       type: ["image/png", "image/jpg", "image/jpeg"]
+	   }
+	});
+     }
 	    
-     document.getElementById('launchReset').addEventListener('click', function() {
-         privilegedFactoryReset();
+     document.getElementById('launchCamera').addEventListener('click', function() {
+         openCamera();
       }, false);
 	    
       function testFun() {
